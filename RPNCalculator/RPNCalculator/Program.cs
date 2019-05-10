@@ -8,11 +8,12 @@ namespace RPNCalculator
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, this is RPN calculator");
-            Console.WriteLine("Expression: 2 3 4 + +");
             string expression = "2 3 4 + +";
+            double expectedResult = 9
             double result = EvaluateRPNExpression(expression);
+            Console.WriteLine("Expression: {0}", expression);
             Console.WriteLine("Result: {0}", result);
-            Console.WriteLine("Expected result: 9");
+            Console.WriteLine("Expected result: {0}", expectedResult);
         }
 
         static double EvaluateRPNExpression(string expr)
