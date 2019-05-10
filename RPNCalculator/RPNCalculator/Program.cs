@@ -15,13 +15,35 @@ namespace RPNCalculator
             Console.WriteLine("Expected result: 5");
         }
 
-        static double EvaluateRPNExpression(string expr) {
+        static double EvaluateRPNExpression(string expr)
+        {
+            Stack<int> numStack = new Stack<int>();
+            int operand;
+            
+            foreach (var item in expr.Split(' '))            {
+            {
+                if(int.TryParse(item, out operand))
+                {
+                        numStack.Push(operand);
+                }
+                else
+                {
+                        int op2 = numStack.Pop();
+                        int op1 = numStack.Pop();
+
+                }
+            }
+            
             double result = 0;
             return result;
+
+            
         }
+
+        
     }
 
-    class Stack<T>//T means any type, we can create a stack of int, string, etc.
+    public  class Stack<T>//T means any type, we can create a stack of int, string, etc.
     {
         int count;
         T[] elements;
