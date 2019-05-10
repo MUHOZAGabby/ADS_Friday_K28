@@ -20,4 +20,20 @@ namespace RPNCalculator
             return result;
         }
     }
+
+    class Stack<T>//T means any type, we can create a stack of int, string, etc.
+    {
+        int count;
+        T[] elements;
+
+       public Stack(){
+            count = 0;
+            elements = new T[10];
+        }
+      public  void Push(T element)
+        {
+            elements[count] = element;
+            count++;
+        }
+    }
 }
