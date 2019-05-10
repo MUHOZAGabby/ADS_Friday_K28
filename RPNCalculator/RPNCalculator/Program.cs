@@ -8,11 +8,11 @@ namespace RPNCalculator
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, this is RPN calculator");
-            Console.WriteLine("Expression: 2 3 + ");
-            string expression = "2 3 +";
+            Console.WriteLine("Expression: 2 3 4 + +");
+            string expression = "2 3 4 + +";
             double result = EvaluateRPNExpression(expression);
             Console.WriteLine("Result: {0}", result);
-            Console.WriteLine("Expected result: 5");
+            Console.WriteLine("Expected result: 9");
         }
 
         static double EvaluateRPNExpression(string expr)
@@ -20,7 +20,7 @@ namespace RPNCalculator
             Stack<double> numStack = new Stack<double>();
             double operand;
             
-            foreach (var item in expr.Split(' '))
+            foreach (var item in expr.Split(' '))//expr.Split transforms a string into an array
             {
                 if(double.TryParse(item, out operand))
                 {
@@ -39,10 +39,12 @@ namespace RPNCalculator
         }
         static double Evaluate(double op1, double op2, string opeerator)
         {
-                if (opeerator == "+")
-                    return op1 + op2;
-                else
-                    return 0;
+            if (opeerator == "+")
+                return op1 + op2;
+            else if (opeerator == "-")
+                return op1 - op2;
+            else
+                return 0;
         }
     }
 
