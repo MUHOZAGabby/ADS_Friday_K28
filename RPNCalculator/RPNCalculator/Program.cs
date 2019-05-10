@@ -26,14 +26,30 @@ namespace RPNCalculator
         int count;
         T[] elements;
 
-       public Stack(){
+        public Stack(){
             count = 0;
             elements = new T[10];
         }
-      public  void Push(T element)
+        public  void Push(T element)
         {
             elements[count] = element;
             count++;
+        }
+        public T Pop()
+        {
+            count--;
+            return elements[count];
+        }
+        public bool IsEmpty()
+        {
+            if (count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
