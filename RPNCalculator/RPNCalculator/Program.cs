@@ -17,30 +17,33 @@ namespace RPNCalculator
 
         static double EvaluateRPNExpression(string expr)
         {
-            Stack<int> numStack = new Stack<int>();
-            int operand;
+            Stack<double> numStack = new Stack<double>();
+            double operand;
             
-            foreach (var item in expr.Split(' '))            {
+            foreach (var item in expr.Split(' '))
             {
-                if(int.TryParse(item, out operand))
+                if(double.TryParse(item, out operand))
                 {
                         numStack.Push(operand);
                 }
                 else
                 {
-                        int op2 = numStack.Pop();
-                        int op1 = numStack.Pop();
-
+                        double op2 = numStack.Pop();
+                        double op1 = numStack.Pop();
+                        double output = Evaluate(op1, op2, item);
+                        numStack.Push(output);
                 }
+
             }
-            
-            double result = 0;
-            return result;
-
-            
+            return numStack.Pop();
         }
-
-        
+        static double Evaluate(double op1, double op2, string opeerator)
+        {
+                if (opeerator == "+")
+                    return op1 + op2;
+                else
+                    return 0;
+        }
     }
 
     public  class Stack<T>//T means any type, we can create a stack of int, string, etc.
