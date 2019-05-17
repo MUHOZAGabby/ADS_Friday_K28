@@ -8,10 +8,10 @@ namespace RPNCalculator
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, this is RPN calculator");
-            string infixexpression = "2 + 3";
-            Console.WriteLine("This is our infixexpression {0}", infixexpression);
-            string postfixexpression = infixtopostfix(infixexpression);
-            Console.WriteLine("This is our postfix expression {0}", postfixexpression);
+            string infixExpression = "2 + 3";
+            Console.WriteLine("This is our infixexpression {0}", infixExpression);
+            string postfixExpression = InfixToPostfix(infixExpression);
+            Console.WriteLine("This is our postfix expression {0}", postfixExpression);
             string expression = "2 3 2 * /";
             double expectedResult = 3;
             double result = EvaluateRPNExpression(expression);
@@ -19,9 +19,16 @@ namespace RPNCalculator
             Console.WriteLine("Result: {0}", result);
             Console.WriteLine("Expected result: {0}", expectedResult);
         }
-        public static string infixtopostfix(string infixexpression)
+        public static string InfixToPostfix(string infixExpression)
         {
-            return "";
+            Stack<string> operatorStack = new Stack<string>();
+            string output = "";
+            foreach (var item in infixExpression.Split(' '))
+            {
+
+
+            }
+            return output;
         }
 
         static double EvaluateRPNExpression(string expr)
@@ -59,16 +66,17 @@ namespace RPNCalculator
         }
     }
 
-    public  class Stack<T>//T means any type, we can create a stack of int, string, etc.
+    public class Stack<T>//T means any type, we can create a stack of int, string, etc.
     {
         int count;
         T[] elements;
 
-        public Stack(){
+        public Stack()
+        {
             count = 0;
             elements = new T[10];
         }
-        public  void Push(T element)
+        public void Push(T element)
         {
             elements[count] = element; //Count points to the top of the stack.
             count++;
