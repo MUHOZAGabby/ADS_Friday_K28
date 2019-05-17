@@ -12,10 +12,8 @@ namespace RPNCalculator
             Console.WriteLine("This is our infixexpression {0}", infixExpression);
             string postfixExpression = InfixToPostfix(infixExpression);
             Console.WriteLine("This is our postfix expression {0}", postfixExpression);
-            string expression = "2 3 2 * /";
-            double expectedResult = 3;
-            double result = EvaluateRPNExpression(expression);
-            Console.WriteLine("Expression: {0}", expression);
+            double expectedResult = 5;
+            double result = EvaluateRPNExpression(postfixExpression);
             Console.WriteLine("Result: {0}", result);
             Console.WriteLine("Expected result: {0}", expectedResult);
         }
@@ -27,7 +25,14 @@ namespace RPNCalculator
             {
                 if (double.TryParse(item, out double operand))
                 {
-                    output += " "+item;
+                    if (output == "") {
+                        output = item;
+                    }
+                    else
+                    {
+                        output += " " + item;
+                    }
+                   
                 }
                 else
                 {
