@@ -25,8 +25,19 @@ namespace RPNCalculator
             string output = "";
             foreach (var item in infixExpression.Split(' '))
             {
+                if (double.TryParse(item, out double operand))
+                {
+                    output += " "+item;
+                }
+                else
+                {
+                    operatorStack.Push(item);
+                }
 
-
+            }
+            while (!operatorStack.IsEmpty())
+            {
+                output += " " + operatorStack.Pop();
             }
             return output;
         }
