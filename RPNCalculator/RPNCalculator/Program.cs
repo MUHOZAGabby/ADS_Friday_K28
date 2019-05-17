@@ -19,35 +19,33 @@ namespace RPNCalculator
         static double EvaluateRPNExpression(string expr)
         {
             Stack<double> numStack = new Stack<double>();
-            double operand;
-            
+
             foreach (var item in expr.Split(' '))//expr.Split transforms a string into an array
             {
-                if(double.TryParse(item, out operand))
+                if (double.TryParse(item, out double operand))
                 {
-                        numStack.Push(operand);
+                    numStack.Push(operand);
                 }
                 else
                 {
-                        double op2 = numStack.Pop();
-                        double op1 = numStack.Pop();
-                        double output = Evaluate(op1, op2, item);//item is operator like + - * /
-                        numStack.Push(output);
+                    double op2 = numStack.Pop();
+                    double op1 = numStack.Pop();
+                    double output = Evaluate(op1, op2, item);//item is operator like + - * /
+                    numStack.Push(output);
                 }
-
             }
             return numStack.Pop();
         }
-        static double Evaluate(double op1, double op2, string opeerator)
+        static double Evaluate(double operand1, double operand2, string operation)
         {
-            if (opeerator == "+")
-                return op1 + op2;
-            else if (opeerator == "-")
-                return op1 - op2;
-            else if (opeerator == "*")
-                return op1 * op2;
-            else if (opeerator == "/")
-                return op1 / op2;
+            if (operation == "+")
+                return operand1 + operand2;
+            else if (operation == "-")
+                return operand1 - operand2;
+            else if (operation == "*")
+                return operand1 * operand2;
+            else if (operation == "/")
+                return operand1 / operand2;
             else
                 return 0;
         }
@@ -64,24 +62,17 @@ namespace RPNCalculator
         }
         public  void Push(T element)
         {
-            elements[count] = element;
+            elements[count] = element; //Count points to the top of the stack.
             count++;
         }
         public T Pop()
         {
             count--;
-            return elements[count];
+            return elements[count]; //Count points to the top of the stack.
         }
         public bool IsEmpty()
         {
-            if (count == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return count == 0;
         }
     }
 }
