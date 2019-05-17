@@ -8,8 +8,8 @@ namespace RPNCalculator
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, this is RPN calculator");
-            string expression = "2 3 4 + +";
-            double expectedResult = 9;
+            string expression = "2 3 2 * /";
+            double expectedResult = 3;
             double result = EvaluateRPNExpression(expression);
             Console.WriteLine("Expression: {0}", expression);
             Console.WriteLine("Result: {0}", result);
@@ -31,7 +31,7 @@ namespace RPNCalculator
                 {
                         double op2 = numStack.Pop();
                         double op1 = numStack.Pop();
-                        double output = Evaluate(op1, op2, item);
+                        double output = Evaluate(op1, op2, item);//item is operator like + - * /
                         numStack.Push(output);
                 }
 
@@ -44,6 +44,10 @@ namespace RPNCalculator
                 return op1 + op2;
             else if (opeerator == "-")
                 return op1 - op2;
+            else if (opeerator == "*")
+                return op1 * op2;
+            else if (opeerator == "/")
+                return op1 / op2;
             else
                 return 0;
         }
