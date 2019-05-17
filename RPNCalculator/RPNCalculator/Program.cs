@@ -8,12 +8,20 @@ namespace RPNCalculator
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, this is RPN calculator");
+            string infixexpression = "2 + 3";
+            Console.WriteLine("This is our infixexpression {0}", infixexpression);
+            string postfixexpression = infixtopostfix(infixexpression);
+            Console.WriteLine("This is our postfix expression {0}", postfixexpression);
             string expression = "2 3 2 * /";
             double expectedResult = 3;
             double result = EvaluateRPNExpression(expression);
             Console.WriteLine("Expression: {0}", expression);
             Console.WriteLine("Result: {0}", result);
             Console.WriteLine("Expected result: {0}", expectedResult);
+        }
+        public static string infixtopostfix(string infixexpression)
+        {
+            return "";
         }
 
         static double EvaluateRPNExpression(string expr)
