@@ -9,7 +9,7 @@ namespace RPNCalculator
         {
             Console.WriteLine("Hello, this is RPN calculator");
             string expression = "2 3 4 + +";
-            double expectedResult = 9
+            double expectedResult = 9;
             double result = EvaluateRPNExpression(expression);
             Console.WriteLine("Expression: {0}", expression);
             Console.WriteLine("Result: {0}", result);
