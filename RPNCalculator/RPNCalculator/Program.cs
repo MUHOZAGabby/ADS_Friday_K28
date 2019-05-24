@@ -61,6 +61,14 @@ namespace RPNCalculator
             }
             return output;
         }
+        public static string Associativity(string op)
+        {
+            if (op=="^")
+            {
+                return "right";
+            }
+            else { return "left"; }
+        }
         static int Precedence (string op)
         {
             if (op=="^")
