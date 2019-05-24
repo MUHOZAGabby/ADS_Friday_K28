@@ -122,5 +122,9 @@ namespace RPNCalculator
         {
             return count == 0;
         }
+        public T Peek()
+        {
+            return elements[count -1];
+        }
     }
 }
