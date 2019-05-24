@@ -8,11 +8,11 @@ namespace RPNCalculator
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, this is RPN calculator");
-            string infixExpression = "2 + 3";
+            string infixExpression = "2 * 3 + 1";
             Console.WriteLine("This is our infixexpression {0}", infixExpression);
             string postfixExpression = InfixToPostfix(infixExpression);
             Console.WriteLine("This is our postfix expression {0}", postfixExpression);
-            double expectedResult = 5;
+            double expectedResult = 7;
             double result = EvaluateRPNExpression(postfixExpression);
             Console.WriteLine("Result: {0}", result);
             Console.WriteLine("Expected result: {0}", expectedResult);
@@ -32,13 +32,11 @@ namespace RPNCalculator
                     {
                         output += " " + item;
                     }
-                   
                 }
                 else
                 {
                     operatorStack.Push(item);
                 }
-
             }
             while (!operatorStack.IsEmpty())
             {
@@ -46,7 +44,25 @@ namespace RPNCalculator
             }
             return output;
         }
-
+        static int Precedence (string op)
+        {
+            if (op=="^")
+            {
+                return 4; 
+            }
+            else if(op == "*")
+            {
+                return 3;
+            }
+            else if(op=="/")
+            {
+                return 3;
+            }
+            else
+            {
+                return 2;
+            }
+        }
         static double EvaluateRPNExpression(string expr)
         {
             Stack<double> numStack = new Stack<double>();
