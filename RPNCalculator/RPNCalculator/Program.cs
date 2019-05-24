@@ -8,7 +8,7 @@ namespace RPNCalculator
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, this is RPN calculator");
-            string infixExpression = "(3 + 1 ) * 2 + 1";
+            string infixExpression = "( 3 + 1 ) * 2 + 1";
             Console.WriteLine("This is our infixexpression {0}", infixExpression);
             string postfixExpression = InfixToPostfix(infixExpression);
             Console.WriteLine("This is our postfix expression {0}", postfixExpression);
@@ -33,13 +33,21 @@ namespace RPNCalculator
                         output += " " + item;
                     }
                 }
-                else if (item== "(")
+                else if (item == "(")
                 {
                     operatorStack.Push(item);
+                } else if (item == ")")
+                {
+                    while (!operatorStack.IsEmpty() && operatorStack.Peek() != "(")
+                    {
+                        output += " " + operatorStack.Pop();
+                        
+                    }
+                    operatorStack.Pop(); // this is to remove the opening bracket from the stack
                 }
                 else
                 {
-                    while (!operatorStack.IsEmpty() && Precedence(operatorStack.Peek()) >= Precedence(item))
+                    while (!operatorStack.IsEmpty() && operatorStack.Peek() != "(" && Precedence(operatorStack.Peek()) >= Precedence(item))
                     {
                         output += " " + operatorStack.Pop();
                     }
