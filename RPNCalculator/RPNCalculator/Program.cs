@@ -8,7 +8,7 @@ namespace RPNCalculator
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, this is RPN calculator");
-            string infixExpression = "( 3 + 1 ) * 2 + 1";
+            string infixExpression = "( ( 3 + 1 ) + 2 ) * 2";
             Console.WriteLine("This is our infixexpression {0}", infixExpression);
             string postfixExpression = InfixToPostfix(infixExpression);
             Console.WriteLine("This is our postfix expression {0}", postfixExpression);
@@ -110,6 +110,8 @@ namespace RPNCalculator
                 return operand1 * operand2;
             else if (operation == "/")
                 return operand1 / operand2;
+            else if (operation == "^")
+                return Math.Pow(operand1, operand2);
             else
                 return 0;
         }
