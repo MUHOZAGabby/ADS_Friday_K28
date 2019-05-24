@@ -8,7 +8,7 @@ namespace RPNCalculator
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, this is RPN calculator");
-            string infixExpression = "( ( 3 + 1 ) + 2 ) * 2";
+            string infixExpression = "2 * 3 ^ 3";
             Console.WriteLine("This is our infixexpression {0}", infixExpression);
             string postfixExpression = InfixToPostfix(infixExpression);
             Console.WriteLine("This is our postfix expression {0}", postfixExpression);
@@ -47,9 +47,12 @@ namespace RPNCalculator
                 }
                 else
                 {
-                    while (!operatorStack.IsEmpty() && operatorStack.Peek() != "(" && Precedence(operatorStack.Peek()) >= Precedence(item))
+                    while (!operatorStack.IsEmpty() && operatorStack.Peek() != "(" && 
+                        (Precedence(operatorStack.Peek()) > Precedence(item)
+                            || Precedence(operatorStack.Peek()) == Precedence(item) && Associativity(item)=="left"))
                     {
                         output += " " + operatorStack.Pop();
+
                     }
 
                     operatorStack.Push(item);
