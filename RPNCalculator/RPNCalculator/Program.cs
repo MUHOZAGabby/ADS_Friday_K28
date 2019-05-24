@@ -35,6 +35,11 @@ namespace RPNCalculator
                 }
                 else
                 {
+                    while (!operatorStack.IsEmpty() && Precedence(operatorStack.Peek()) >= Precedence(item))
+                    {
+                        output += " " + operatorStack.Pop();
+                    }
+
                     operatorStack.Push(item);
                 }
             }
